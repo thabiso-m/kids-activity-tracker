@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/gradient_card_bg">
+
+    <TextView
+        android:id="@+id/widget_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✨ Quick Activity"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#0061A4"
+        android:paddingBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:elevation="2dp">
+
+        <Button
+            android:id="@+id/widget_add_homework"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📚 Add Homework"
+            android:textSize="14sp"
+            android:backgroundTint="#0061A4"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/widget_add_sports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚽ Add Sports"
+            android:textSize="14sp"
+            android:backgroundTint="#6B5778"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/widget_add_chores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🏠 Add Chores"
+            android:textSize="14sp"
+            android:backgroundTint="#855300"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/widget_open_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open KidTrack"
+            android:textSize="12sp"
+            android:backgroundTint="#4CAF50" />
+
+    </LinearLayout>
+
+</LinearLayout>

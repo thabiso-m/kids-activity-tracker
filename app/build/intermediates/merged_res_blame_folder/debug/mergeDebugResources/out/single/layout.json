@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-58:\\layout\\item_activity.xml"
     },
     {
-        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-55:\\layout\\fragment_activities.xml",
-        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-58:\\layout\\fragment_activities.xml"
+        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/fragment_calendar.xml",
+        "source": "com.example.kidtrack.app-main-58:/layout/fragment_calendar.xml"
     },
     {
-        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/fragment_reminders.xml",
-        "source": "com.example.kidtrack.app-main-58:/layout/fragment_reminders.xml"
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-55:\\layout\\fragment_activities.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-58:\\layout\\fragment_activities.xml"
     },
     {
         "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-55:\\layout\\fragment_reminders.xml",
@@ -48,12 +48,12 @@
         "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-58:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/item_activity.xml",
-        "source": "com.example.kidtrack.app-main-58:/layout/item_activity.xml"
+        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/calendar_month_header.xml",
+        "source": "com.example.kidtrack.app-main-58:/layout/calendar_month_header.xml"
     },
     {
-        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/fragment_profiles.xml",
-        "source": "com.example.kidtrack.app-main-58:/layout/fragment_profiles.xml"
+        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/widget_quick_activity.xml",
+        "source": "com.example.kidtrack.app-main-58:/layout/widget_quick_activity.xml"
     },
     {
         "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-55:\\layout\\fragment_reports.xml",
@@ -78,5 +78,9 @@
     {
         "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-55:\\layout\\dialog_report.xml",
         "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-58:\\layout\\dialog_report.xml"
+    },
+    {
+        "merged": "com.example.kidtrack.app-mergeDebugResources-55:/layout/calendar_day_layout.xml",
+        "source": "com.example.kidtrack.app-main-58:/layout/calendar_day_layout.xml"
     }
 ]

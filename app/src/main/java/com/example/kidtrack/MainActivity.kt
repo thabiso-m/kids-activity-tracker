@@ -43,6 +43,22 @@ class MainActivity : AppCompatActivity() {
         
         NavigationUI.setupActionBarWithNavController(this, navController)
         NavigationUI.setupWithNavController(binding.bottomNavigation, navController)
+        
+        // Handle widget intents
+        handleWidgetIntent()
+    }
+    
+    private fun handleWidgetIntent() {
+        val category = intent?.getStringExtra("category")
+        if (category != null) {
+            // Navigate to Activities fragment and open add dialog with pre-filled category
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.activitiesFragment)
+            
+            // Store category for fragment to use
+            intent.removeExtra("category")
+        }
     }
 
     private fun requestNotificationPermission() {

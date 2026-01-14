@@ -3,6 +3,8 @@ package com.example.kidtrack.ui.activities
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ArrayAdapter
@@ -33,6 +35,10 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
     private lateinit var activitiesAdapter: ActivitiesAdapter
     private lateinit var addActivityButton: ExtendedFloatingActionButton
     private lateinit var emptyStateLayout: View
+    private lateinit var searchEditText: TextInputEditText
+    private lateinit var filterButton: MaterialButton
+    private var allActivities: List<Activity> = emptyList()
+    private var currentFilter: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +65,25 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
         emptyStateLayout = view.findViewById(R.id.emptyStateActivities)
         setupEmptyState()
 
+        // Setup search
+        searchEditText = view.findViewById(R.id.searchEditText)
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                filterActivities(s.toString())
+            }
+        })
+        
+        // Setup filter button
+        filterButton = view.findViewById(R.id.filterButton)
+        filterButton.setOnClickListener {
+            showFilterDialog()
+        }
+
         activitiesViewModel.activities.observe(viewLifecycleOwner) { activities ->
-            activitiesAdapter.submitList(activities)
+            allActivities = activities
+            filterActivities(searchEditText.text.toString())
             updateEmptyState(activities.isEmpty())
         }
         
@@ -295,6 +318,51 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
             }
             .setNegativeButton("Cancel", null)
             .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
+    }
+    
+    private fun filterActivities(query: String) {
+        var filtered = allActivities
+        
+        // Apply search filter
+        if (query.isNotBlank()) {
+            filtered = filtered.filter { activity ->
+                activity.description.contains(query, ignoreCase = true) ||
+                activity.category.contains(query, ignoreCase = true) ||
+                activity.notes.contains(query, ignoreCase = true)
+            }
+        }
+        
+        // Apply category filter
+        currentFilter?.let { filter ->
+            filtered = filtered.filter { it.category == filter }
+        }
+        
+        activitiesAdapter.submitList(filtered)
+    }
+    
+    private fun showFilterDialog() {
+        val categories = allActivities.map { it.category }.distinct().toTypedArray()
+        
+        if (categories.isEmpty()) {
+            Toast.makeText(requireContext(), "No categories available", Toast.LENGTH_SHORT).show()
+            return
+        }
+        
+        val options = arrayOf("All Categories") + categories
+        var selectedIndex = if (currentFilter == null) 0 else options.indexOf(currentFilter) 
+        
+        AlertDialog.Builder(requireContext())
+            .setTitle("Filter by Category")
+            .setSingleChoiceItems(options, selectedIndex) { _, which ->
+                selectedIndex = which
+            }
+            .setPositiveButton("Apply") { _, _ ->
+                currentFilter = if (selectedIndex == 0) null else options[selectedIndex]
+                filterActivities(searchEditText.text.toString())
+                filterButton.text = if (currentFilter == null) "Filter" else "Filter: $currentFilter"
+            }
+            .setNegativeButton("Cancel", null)
             .show()
     }
 }

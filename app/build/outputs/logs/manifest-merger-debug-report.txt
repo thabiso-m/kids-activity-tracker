@@ -1,9 +1,20 @@
 -- Merging decision tree log ---
+provider#androidx.core.content.FileProvider
+INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:38:9-46:20
+	android:grantUriPermissions
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:42:13-47
+	android:authorities
+		INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:40:13-64
+	android:exported
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:39:13-62
 manifest
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-39:12
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-62:12
+INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-62:12
+INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-62:12
+INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:1-62:12
 MERGED from [androidx.databinding:databinding-adapters:8.3.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\67c59c09e232d402349fbb0deb2be4f6\transformed\databinding-adapters-8.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.3.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\f859c3d61faddaa0618b8b210f817e34\transformed\jetified-databinding-ktx-8.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.3.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\30d99e18764f48f0ace2100319335277\transformed\databinding-runtime-8.3.0\AndroidManifest.xml:2:1-7:12
@@ -62,6 +73,7 @@ MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\Thabzzz\.gradle\ca
 MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\b1df736ae5f171ce71d83b0eae6a46c7\transformed\sqlite-2.4.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\2b40abf488415c1abc8c08dcccd21971\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\f8b02c6864db78b5564547844b4f71fa\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\c24a3f0aa05b5943ae7ad1005d26d1dc\transformed\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:2:1-20:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\25a7455799edf22861eb811a727443c2\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\84b601ee1b29e4a09f17f3b749a928b2\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\a0f1f0bd9cbe78c867e3e645e1ccddf7\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -81,8 +93,8 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Thabzzz\.gradle\caches\transfo
 	xmlns:android
 		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:3:5-24:19
-INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:3:5-24:19
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:3:5-47:19
+INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:3:5-47:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\8b52b399139af73ceef1e5edf50e30c3\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\8b52b399139af73ceef1e5edf50e30c3\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Thabzzz\.gradle\caches\transforms-3\b1090b7e518ecc30946ed225fe3149e1\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -143,44 +155,68 @@ ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\Andro
 		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:23:13-37
 	android:name
 		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:21:13-55
+receiver#com.example.kidtrack.widget.QuickActivityWidget
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:26:9-35:20
+	android:exported
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:28:13-36
+	android:name
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:27:13-55
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:29:13-31:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:30:17-84
+	android:name
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:30:25-81
+meta-data#android.appwidget.provider
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:32:13-34:55
+	android:resource
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:34:17-52
+	android:name
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:33:17-58
 uses-permission#android.permission.INTERNET
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:26:5-67
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:49:5-67
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:26:22-64
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:49:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:27:5-79
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:50:5-79
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:27:22-76
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:50:22-76
 uses-permission#android.permission.VIBRATE
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:28:5-66
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:51:5-66
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:28:22-63
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:51:22-63
 uses-permission#android.permission.WAKE_LOCK
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:29:5-68
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:52:5-68
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:29:22-65
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:52:22-65
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:31:5-77
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:54:5-77
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:31:22-74
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:54:22-74
 uses-permission#android.permission.SCHEDULE_EXACT_ALARM
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:33:5-79
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:56:5-79
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:33:22-76
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:56:22-76
 uses-permission#android.permission.USE_EXACT_ALARM
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:34:5-74
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:57:5-74
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:34:22-71
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:57:22-71
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:36:5-37:38
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:59:5-60:38
 	android:maxSdkVersion
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:37:9-35
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:60:9-35
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:36:22-77
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:59:22-77
 uses-permission#android.permission.READ_MEDIA_IMAGES
-ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:38:5-76
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:61:5-76
 	android:name
-		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:38:22-73
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:61:22-73
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:43:13-45:54
+	android:resource
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:45:17-51
+	android:name
+		ADDED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml:44:17-67
 uses-sdk
 INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\My Drive\Tsebo Tech Consulting\ai-apps\KidTrack\app\src\main\AndroidManifest.xml
@@ -301,6 +337,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Thabzzz
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\2b40abf488415c1abc8c08dcccd21971\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\f8b02c6864db78b5564547844b4f71fa\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\f8b02c6864db78b5564547844b4f71fa\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\c24a3f0aa05b5943ae7ad1005d26d1dc\transformed\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:16:5-18:41
+MERGED from [com.github.PhilJay:MPAndroidChart:v3.1.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\c24a3f0aa05b5943ae7ad1005d26d1dc\transformed\jetified-MPAndroidChart-v3.1.0\AndroidManifest.xml:16:5-18:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\25a7455799edf22861eb811a727443c2\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\25a7455799edf22861eb811a727443c2\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\Thabzzz\.gradle\caches\transforms-3\84b601ee1b29e4a09f17f3b749a928b2\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44

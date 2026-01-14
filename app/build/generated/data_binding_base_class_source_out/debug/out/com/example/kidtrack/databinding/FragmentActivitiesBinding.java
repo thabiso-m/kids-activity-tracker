@@ -13,7 +13,9 @@ import androidx.viewbinding.ViewBindings;
 import com.example.kidtrack.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -35,17 +37,26 @@ public final class FragmentActivitiesBinding implements ViewBinding {
   public final EmptyStateBinding emptyStateActivities;
 
   @NonNull
+  public final MaterialButton filterButton;
+
+  @NonNull
+  public final TextInputEditText searchEditText;
+
+  @NonNull
   public final MaterialToolbar toolbar;
 
   private FragmentActivitiesBinding(@NonNull CoordinatorLayout rootView,
       @NonNull RecyclerView activitiesRecyclerView,
       @NonNull ExtendedFloatingActionButton addActivityButton, @NonNull AppBarLayout appBarLayout,
-      @NonNull EmptyStateBinding emptyStateActivities, @NonNull MaterialToolbar toolbar) {
+      @NonNull EmptyStateBinding emptyStateActivities, @NonNull MaterialButton filterButton,
+      @NonNull TextInputEditText searchEditText, @NonNull MaterialToolbar toolbar) {
     this.rootView = rootView;
     this.activitiesRecyclerView = activitiesRecyclerView;
     this.addActivityButton = addActivityButton;
     this.appBarLayout = appBarLayout;
     this.emptyStateActivities = emptyStateActivities;
+    this.filterButton = filterButton;
+    this.searchEditText = searchEditText;
     this.toolbar = toolbar;
   }
 
@@ -101,6 +112,18 @@ public final class FragmentActivitiesBinding implements ViewBinding {
       }
       EmptyStateBinding binding_emptyStateActivities = EmptyStateBinding.bind(emptyStateActivities);
 
+      id = R.id.filterButton;
+      MaterialButton filterButton = ViewBindings.findChildViewById(rootView, id);
+      if (filterButton == null) {
+        break missingId;
+      }
+
+      id = R.id.searchEditText;
+      TextInputEditText searchEditText = ViewBindings.findChildViewById(rootView, id);
+      if (searchEditText == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       MaterialToolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
@@ -108,7 +131,8 @@ public final class FragmentActivitiesBinding implements ViewBinding {
       }
 
       return new FragmentActivitiesBinding((CoordinatorLayout) rootView, activitiesRecyclerView,
-          addActivityButton, appBarLayout, binding_emptyStateActivities, toolbar);
+          addActivityButton, appBarLayout, binding_emptyStateActivities, filterButton,
+          searchEditText, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

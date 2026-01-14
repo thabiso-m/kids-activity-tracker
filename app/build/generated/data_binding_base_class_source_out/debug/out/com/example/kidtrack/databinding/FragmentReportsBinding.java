@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.kidtrack.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -26,7 +28,13 @@ public final class FragmentReportsBinding implements ViewBinding {
   public final AppBarLayout appBarLayout;
 
   @NonNull
+  public final BarChart barChart;
+
+  @NonNull
   public final ExtendedFloatingActionButton generateReportButton;
+
+  @NonNull
+  public final PieChart pieChart;
 
   @NonNull
   public final RecyclerView reportsRecyclerView;
@@ -47,14 +55,16 @@ public final class FragmentReportsBinding implements ViewBinding {
   public final MaterialToolbar toolbar;
 
   private FragmentReportsBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull AppBarLayout appBarLayout,
-      @NonNull ExtendedFloatingActionButton generateReportButton,
+      @NonNull AppBarLayout appBarLayout, @NonNull BarChart barChart,
+      @NonNull ExtendedFloatingActionButton generateReportButton, @NonNull PieChart pieChart,
       @NonNull RecyclerView reportsRecyclerView, @NonNull ItemStatCardBinding statCardCompleted,
       @NonNull ItemStatCardBinding statCardRate, @NonNull ItemStatCardBinding statCardThisWeek,
       @NonNull ItemStatCardBinding statCardTotal, @NonNull MaterialToolbar toolbar) {
     this.rootView = rootView;
     this.appBarLayout = appBarLayout;
+    this.barChart = barChart;
     this.generateReportButton = generateReportButton;
+    this.pieChart = pieChart;
     this.reportsRecyclerView = reportsRecyclerView;
     this.statCardCompleted = statCardCompleted;
     this.statCardRate = statCardRate;
@@ -96,9 +106,21 @@ public final class FragmentReportsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.barChart;
+      BarChart barChart = ViewBindings.findChildViewById(rootView, id);
+      if (barChart == null) {
+        break missingId;
+      }
+
       id = R.id.generate_report_button;
       ExtendedFloatingActionButton generateReportButton = ViewBindings.findChildViewById(rootView, id);
       if (generateReportButton == null) {
+        break missingId;
+      }
+
+      id = R.id.pieChart;
+      PieChart pieChart = ViewBindings.findChildViewById(rootView, id);
+      if (pieChart == null) {
         break missingId;
       }
 
@@ -142,8 +164,8 @@ public final class FragmentReportsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentReportsBinding((CoordinatorLayout) rootView, appBarLayout,
-          generateReportButton, reportsRecyclerView, binding_statCardCompleted,
+      return new FragmentReportsBinding((CoordinatorLayout) rootView, appBarLayout, barChart,
+          generateReportButton, pieChart, reportsRecyclerView, binding_statCardCompleted,
           binding_statCardRate, binding_statCardThisWeek, binding_statCardTotal, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);

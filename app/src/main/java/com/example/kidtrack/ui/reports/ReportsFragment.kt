@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,12 @@ import com.example.kidtrack.R
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.repository.KidTrackRepository
 import com.example.kidtrack.ui.activities.ActivitiesAdapter
+import com.example.kidtrack.utils.ReportExporter
+import com.github.mikephil.charting.charts.BarChart
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.*
+import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,6 +31,8 @@ class ReportsFragment : Fragment() {
     private lateinit var activitiesAdapter: ActivitiesAdapter
     private lateinit var generateReportButton: ExtendedFloatingActionButton
     private lateinit var reportsRecyclerView: RecyclerView
+    private lateinit var pieChart: PieChart
+    private lateinit var barChart: BarChart
 
     // Stat card views
     private lateinit var statTotalValue: TextView
@@ -77,6 +86,11 @@ class ReportsFragment : Fragment() {
         })
         reportsRecyclerView.adapter = activitiesAdapter
 
+        // Initialize charts
+        pieChart = view.findViewById(R.id.pieChart)
+        barChart = view.findViewById(R.id.barChart)
+        setupCharts()
+
         // Setup FAB
         generateReportButton = view.findViewById(R.id.generate_report_button)
         generateReportButton.setOnClickListener {
@@ -100,6 +114,107 @@ class ReportsFragment : Fragment() {
 
         // Update recent activities list
         activitiesAdapter.submitList(stats.recentActivities)
+        
+        // Update charts
+        updatePieChart(stats.categoryBreakdown)
+        updateBarChart(stats)
+    }
+    
+    private fun setupCharts() {
+        // Setup Pie Chart
+        pieChart.description.isEnabled = false
+        pieChart.setUsePercentValues(true)
+        pieChart.setDrawHoleEnabled(true)
+        pieChart.setHoleColor(android.graphics.Color.WHITE)
+        pieChart.setTransparentCircleColor(android.graphics.Color.WHITE)
+        pieChart.setTransparentCircleAlpha(110)
+        pieChart.holeRadius = 58f
+        pieChart.transparentCircleRadius = 61f
+        pieChart.setDrawCenterText(true)
+        pieChart.centerText = "Categories"
+        pieChart.setCenterTextSize(14f)
+        pieChart.setRotationAngle(0f)
+        pieChart.setRotationEnabled(true)
+        pieChart.setHighlightPerTapEnabled(true)
+        pieChart.animateY(1400)
+        
+        // Setup Bar Chart
+        barChart.description.isEnabled = false
+        barChart.setFitBars(true)
+        barChart.animateY(1000)
+        barChart.legend.isEnabled = true
+        barChart.xAxis.setDrawGridLines(false)
+        barChart.axisLeft.setDrawGridLines(false)
+        barChart.axisRight.isEnabled = false
+    }
+    
+    private fun updatePieChart(categoryBreakdown: Map<String, Int>) {
+        if (categoryBreakdown.isEmpty()) {
+            pieChart.clear()
+            pieChart.setNoDataText("No activity data available")
+            return
+        }
+        
+        val entries = ArrayList<PieEntry>()
+        for ((category, count) in categoryBreakdown) {
+            entries.add(PieEntry(count.toFloat(), category))
+        }
+        
+        val dataSet = PieDataSet(entries, "")
+        dataSet.sliceSpace = 3f
+        dataSet.selectionShift = 5f
+        
+        val colors = ArrayList<Int>()
+        colors.add(android.graphics.Color.parseColor("#0061A4"))
+        colors.add(android.graphics.Color.parseColor("#6B5778"))
+        colors.add(android.graphics.Color.parseColor("#855300"))
+        colors.add(android.graphics.Color.parseColor("#4CAF50"))
+        colors.add(android.graphics.Color.parseColor("#FF9500"))
+        dataSet.colors = colors
+        
+        dataSet.valueTextSize = 12f
+        dataSet.valueTextColor = android.graphics.Color.WHITE
+        
+        val data = PieData(dataSet)
+        data.setValueFormatter(object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return "${value.toInt()}"
+            }
+        })
+        
+        pieChart.data = data
+        pieChart.invalidate()
+    }
+    
+    private fun updateBarChart(stats: com.example.kidtrack.data.model.ReportStatistics) {
+        val entries = ArrayList<BarEntry>()
+        
+        // Sample data for last 7 days
+        val calendar = Calendar.getInstance()
+        for (i in 6 downTo 0) {
+            calendar.add(Calendar.DAY_OF_YEAR, -1)
+            // In real implementation, get actual count from database
+            val count = if (i < 3) stats.thisWeekActivities / 7 else (stats.thisWeekActivities / 7) + 1
+            entries.add(BarEntry(i.toFloat(), count.toFloat()))
+        }
+        
+        val dataSet = BarDataSet(entries, "Activities per Day")
+        dataSet.color = android.graphics.Color.parseColor("#0061A4")
+        dataSet.valueTextColor = android.graphics.Color.BLACK
+        dataSet.valueTextSize = 10f
+        
+        val data = BarData(dataSet)
+        data.barWidth = 0.9f
+        
+        barChart.data = data
+        barChart.xAxis.valueFormatter = object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                val calendar = Calendar.getInstance()
+                calendar.add(Calendar.DAY_OF_YEAR, -value.toInt())
+                return SimpleDateFormat("EEE", Locale.getDefault()).format(calendar.time)
+            }
+        }
+        barChart.invalidate()
     }
 
     private fun showReportDialog() {
@@ -155,7 +270,38 @@ class ReportsFragment : Fragment() {
         AlertDialog.Builder(requireContext())
             .setView(dialogView)
             .setPositiveButton("Close", null)
+            .setNeutralButton("Share PDF") { _, _ ->
+                exportAndSharePdf()
+            }
+            .setNegativeButton("Share Image") { _, _ ->
+                exportAndShareImage(dialogView)
+            }
             .show()
+    }
+
+    private fun exportAndSharePdf() {
+        val stats = reportsViewModel.statistics.value
+        if (stats != null) {
+            val file = ReportExporter.exportReportAsPdf(
+                requireContext(),
+                stats,
+                stats.recentActivities
+            )
+            if (file != null) {
+                ReportExporter.shareFile(requireContext(), file, "application/pdf")
+            } else {
+                Toast.makeText(requireContext(), "Failed to generate PDF", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun exportAndShareImage(view: View) {
+        val file = ReportExporter.exportViewAsImage(requireContext(), view)
+        if (file != null) {
+            ReportExporter.shareFile(requireContext(), file, "image/png")
+        } else {
+            Toast.makeText(requireContext(), "Failed to generate image", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onResume() {
