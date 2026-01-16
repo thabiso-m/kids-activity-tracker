@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +13,8 @@ import com.example.kidtrack.databinding.FragmentDashboardBinding
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.repository.KidTrackRepository
 import com.example.kidtrack.ui.activities.ActivitiesAdapter
+import com.example.kidtrack.utils.UiState
+import com.google.android.material.snackbar.Snackbar
 
 class DashboardFragment : Fragment() {
 
@@ -45,8 +46,8 @@ class DashboardFragment : Fragment() {
         upcomingActivitiesAdapter = ActivitiesAdapter(
             viewLifecycleOwner,
             onItemClick = { activity ->
-            // Handle upcoming activity click
-        })
+                // Handle upcoming activity click
+            })
         val upcomingRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewActivities)
         upcomingRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         upcomingRecyclerView.adapter = upcomingActivitiesAdapter
@@ -55,20 +56,53 @@ class DashboardFragment : Fragment() {
         overdueTasksAdapter = ActivitiesAdapter(
             viewLifecycleOwner,
             onItemClick = { task ->
-            // Handle overdue task click
-        })
+                // Handle overdue task click
+            })
         val overdueRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewOverdue)
         overdueRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         overdueRecyclerView.adapter = overdueTasksAdapter
 
-        // Observe data
-        viewModel.upcomingActivities.observe(viewLifecycleOwner, Observer { activities ->
-            upcomingActivitiesAdapter.submitList(activities)
-        })
+        // Observe upcoming activities with UiState
+        viewModel.upcomingActivities.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    // Show loading indicator
+                    upcomingRecyclerView.visibility = View.GONE
+                }
+                is UiState.Success -> {
+                    // Hide loading and show data
+                    upcomingRecyclerView.visibility = View.VISIBLE
+                    upcomingActivitiesAdapter.submitList(state.data)
+                }
+                is UiState.Error -> {
+                    // Hide loading and show error
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { viewModel.retry() }
+                        .show()
+                }
+            }
+        }
 
-        viewModel.overdueTasks.observe(viewLifecycleOwner, Observer { tasks ->
-            overdueTasksAdapter.submitList(tasks)
-        })
+        // Observe overdue tasks with UiState
+        viewModel.overdueTasks.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    // Show loading indicator
+                    overdueRecyclerView.visibility = View.GONE
+                }
+                is UiState.Success -> {
+                    // Hide loading and show data
+                    overdueRecyclerView.visibility = View.VISIBLE
+                    overdueTasksAdapter.submitList(state.data)
+                }
+                is UiState.Error -> {
+                    // Hide loading and show error
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { viewModel.retry() }
+                        .show()
+                }
+            }
+        }
         
         // Fetch dashboard data
         viewModel.loadDashboardData()

@@ -13,6 +13,7 @@ import com.example.kidtrack.R
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.model.Activity
 import com.example.kidtrack.data.repository.KidTrackRepository
+import com.example.kidtrack.utils.DateTimeUtils
 import kotlinx.coroutines.launch
 
 class ActivitiesAdapter(
@@ -44,7 +45,12 @@ class ActivitiesAdapter(
 
         fun bind(activity: Activity) {
             titleTextView.text = activity.category
-            dateTextView.text = "${activity.date} at ${activity.time}"
+            
+            // Format timestamp and time for display
+            val dateString = DateTimeUtils.timestampToDateString(activity.dateTimestamp)
+            val timeString = DateTimeUtils.minutesToTimeString(activity.timeMinutes)
+            dateTextView.text = "$dateString at $timeString"
+            
             descriptionTextView.text = activity.description
             
             // Load and display profile name

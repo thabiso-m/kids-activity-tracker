@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kidtrack.R
 import com.example.kidtrack.data.model.Reminder
+import com.example.kidtrack.utils.DateTimeUtils
 
 class RemindersAdapter(
     private val onItemClick: (Reminder) -> Unit = {},
@@ -36,7 +37,7 @@ class RemindersAdapter(
 
         fun bind(reminder: Reminder) {
             titleTextView.text = "Reminder #${reminder.id}"
-            timeTextView.text = reminder.time
+            timeTextView.text = DateTimeUtils.minutesToTimeString(reminder.timeMinutes)
             messageTextView.text = "Frequency: ${reminder.frequency}"
             
             itemView.setOnClickListener {

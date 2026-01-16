@@ -79,7 +79,9 @@ object ReportExporter {
                 canvas.drawText("${activity.category}: ${activity.description}", 70f, yPos, paint)
                 yPos += 20f
                 paint.color = Color.GRAY
-                canvas.drawText("${activity.date} at ${activity.time}", 90f, yPos, paint)
+                val dateString = DateTimeUtils.timestampToDateString(activity.dateTimestamp)
+                val timeString = DateTimeUtils.minutesToTimeString(activity.timeMinutes)
+                canvas.drawText("$dateString at $timeString", 90f, yPos, paint)
                 yPos += 30f
                 paint.color = Color.BLACK
             }

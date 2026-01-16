@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.example.kidtrack.utils.NotificationHelper
+import com.example.kidtrack.utils.DateTimeUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,11 +15,17 @@ class ReminderReceiver : BroadcastReceiver() {
     
     override fun onReceive(context: Context, intent: Intent) {
         val reminderId = intent.getLongExtra("REMINDER_ID", -1L)
-        val reminderTime = intent.getStringExtra("REMINDER_TIME") ?: ""
+        val reminderTimeMinutes = intent.getIntExtra("REMINDER_TIME_MINUTES", -1)
         val activityId = intent.getLongExtra("ACTIVITY_ID", -1L)
         
         if (reminderId == -1L || activityId == -1L) {
             return
+        }
+        
+        val reminderTime = if (reminderTimeMinutes >= 0) {
+            DateTimeUtils.minutesToTimeString(reminderTimeMinutes)
+        } else {
+            ""
         }
         
         // Fetch activity details and send notification

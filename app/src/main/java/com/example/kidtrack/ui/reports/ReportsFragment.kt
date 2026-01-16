@@ -16,12 +16,14 @@ import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.repository.KidTrackRepository
 import com.example.kidtrack.ui.activities.ActivitiesAdapter
 import com.example.kidtrack.utils.ReportExporter
+import com.example.kidtrack.utils.UiState
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -97,9 +99,23 @@ class ReportsFragment : Fragment() {
             showReportDialog()
         }
 
-        // Observe statistics
-        reportsViewModel.statistics.observe(viewLifecycleOwner) { stats ->
-            updateStatistics(stats)
+        // Observe statistics with UiState
+        reportsViewModel.statistics.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    hideCharts()
+                }
+                is UiState.Success -> {
+                    showCharts()
+                    updateStatistics(state.data)
+                }
+                is UiState.Error -> {
+                    hideCharts()
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { reportsViewModel.retry() }
+                        .show()
+                }
+            }
         }
 
         // Load initial data
@@ -146,6 +162,18 @@ class ReportsFragment : Fragment() {
         barChart.xAxis.setDrawGridLines(false)
         barChart.axisLeft.setDrawGridLines(false)
         barChart.axisRight.isEnabled = false
+    }
+    
+    private fun showCharts() {
+        pieChart.visibility = View.VISIBLE
+        barChart.visibility = View.VISIBLE
+        reportsRecyclerView.visibility = View.VISIBLE
+    }
+    
+    private fun hideCharts() {
+        pieChart.visibility = View.GONE
+        barChart.visibility = View.GONE
+        reportsRecyclerView.visibility = View.GONE
     }
     
     private fun updatePieChart(categoryBreakdown: Map<String, Int>) {
@@ -221,7 +249,13 @@ class ReportsFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.dialog_report, null)
 
-        val stats = reportsViewModel.statistics.value
+        val statsState = reportsViewModel.statistics.value
+        
+        // Extract stats from UiState
+        val stats = when (statsState) {
+            is UiState.Success -> statsState.data
+            else -> null
+        }
 
         if (stats != null) {
             // Set report period
@@ -280,7 +314,12 @@ class ReportsFragment : Fragment() {
     }
 
     private fun exportAndSharePdf() {
-        val stats = reportsViewModel.statistics.value
+        val statsState = reportsViewModel.statistics.value
+        val stats = when (statsState) {
+            is UiState.Success -> statsState.data
+            else -> null
+        }
+        
         if (stats != null) {
             val file = ReportExporter.exportReportAsPdf(
                 requireContext(),

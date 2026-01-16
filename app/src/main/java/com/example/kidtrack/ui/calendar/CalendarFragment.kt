@@ -15,6 +15,8 @@ import com.example.kidtrack.data.repository.KidTrackRepository
 import com.example.kidtrack.ui.activities.ActivitiesAdapter
 import com.example.kidtrack.ui.activities.ActivitiesViewModel
 import com.example.kidtrack.ui.activities.ActivitiesViewModelFactory
+import com.example.kidtrack.utils.DateTimeUtils
+import com.example.kidtrack.utils.UiState
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -77,7 +79,12 @@ class CalendarFragment : Fragment(R.layout.fragment_calendar) {
         selectedDateText.text = displayDateFormat.format(date)
 
         lifecycleScope.launch {
-            val activities = activitiesViewModel.activities.value?.filter { it.date == dateString } ?: emptyList()
+            val timestamp = DateTimeUtils.dateStringToTimestamp(dateString)
+            val activitiesState = activitiesViewModel.activities.value
+            val activities = when (activitiesState) {
+                is UiState.Success -> activitiesState.data.filter { it.dateTimestamp == timestamp }
+                else -> emptyList()
+            }
             
             if (activities.isEmpty()) {
                 activitiesRecyclerView.visibility = View.GONE

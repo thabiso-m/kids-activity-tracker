@@ -18,8 +18,12 @@ import com.example.kidtrack.R
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.model.UserProfile
 import com.example.kidtrack.data.repository.KidTrackRepository
+import com.example.kidtrack.utils.UiState
+import com.example.kidtrack.utils.ValidationHelper
+import com.example.kidtrack.utils.ValidationResult
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 
 class ProfilesFragment : Fragment() {
@@ -76,10 +80,38 @@ class ProfilesFragment : Fragment() {
         emptyStateLayout = view.findViewById(R.id.emptyStateProfiles)
         setupEmptyState()
         
-        // Observe profiles data
-        viewModel.profiles.observe(viewLifecycleOwner) { profiles ->
-            profilesAdapter.submitList(profiles)
-            updateEmptyState(profiles.isEmpty())
+        // Observe profiles data with UiState
+        viewModel.profiles.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    profilesRecyclerView.visibility = View.GONE
+                    emptyStateLayout.visibility = View.GONE
+                }
+                is UiState.Success -> {
+                    profilesAdapter.submitList(state.data)
+                    updateEmptyState(state.data.isEmpty())
+                }
+                is UiState.Error -> {
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { viewModel.retry() }
+                        .show()
+                }
+            }
+        }
+        
+        // Observe operation status
+        viewModel.operationStatus.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                    viewModel.clearOperationStatus()
+                }
+                is UiState.Error -> {
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG).show()
+                    viewModel.clearOperationStatus()
+                }
+                else -> {}
+            }
         }
         
         // Setup FAB click listener
@@ -132,24 +164,36 @@ class ProfilesFragment : Fragment() {
                 val name = nameInput.text.toString().trim()
                 val ageStr = ageInput.text.toString().trim()
 
-                if (name.isEmpty() || ageStr.isEmpty()) {
-                    Toast.makeText(requireContext(), "Please fill name and age", Toast.LENGTH_SHORT).show()
+                // Validate inputs
+                val nameValidation = ValidationHelper.combine(
+                    ValidationHelper.validateNotEmpty(name, "Name"),
+                    ValidationHelper.validateMinLength(name, 2, "Name"),
+                    ValidationHelper.validateMaxLength(name, 50, "Name")
+                )
+                
+                if (!nameValidation.isSuccess()) {
+                    Toast.makeText(requireContext(), nameValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                     return@setPositiveButton
                 }
 
                 val age = ageStr.toIntOrNull()
-                if (age == null || age <= 0) {
-                    Toast.makeText(requireContext(), "Please enter a valid age", Toast.LENGTH_SHORT).show()
+                val ageValidation = if (age == null) {
+                    ValidationResult.Error("Please enter a valid age")
+                } else {
+                    ValidationHelper.validateAge(age)
+                }
+                
+                if (!ageValidation.isSuccess()) {
+                    Toast.makeText(requireContext(), ageValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                     return@setPositiveButton
                 }
 
                 val profile = UserProfile(
                     name = name,
-                    age = age,
+                    age = age!!,
                     photoUrl = selectedImageUri?.toString()
                 )
                 viewModel.addProfile(profile)
-                Toast.makeText(requireContext(), "Profile added successfully", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)
             .show()
@@ -191,24 +235,36 @@ class ProfilesFragment : Fragment() {
                 val name = nameInput.text.toString().trim()
                 val ageStr = ageInput.text.toString().trim()
 
-                if (name.isEmpty() || ageStr.isEmpty()) {
-                    Toast.makeText(requireContext(), "Please fill name and age", Toast.LENGTH_SHORT).show()
+                // Validate inputs
+                val nameValidation = ValidationHelper.combine(
+                    ValidationHelper.validateNotEmpty(name, "Name"),
+                    ValidationHelper.validateMinLength(name, 2, "Name"),
+                    ValidationHelper.validateMaxLength(name, 50, "Name")
+                )
+                
+                if (!nameValidation.isSuccess()) {
+                    Toast.makeText(requireContext(), nameValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                     return@setPositiveButton
                 }
 
                 val age = ageStr.toIntOrNull()
-                if (age == null || age <= 0) {
-                    Toast.makeText(requireContext(), "Please enter a valid age", Toast.LENGTH_SHORT).show()
+                val ageValidation = if (age == null) {
+                    ValidationResult.Error("Please enter a valid age")
+                } else {
+                    ValidationHelper.validateAge(age)
+                }
+                
+                if (!ageValidation.isSuccess()) {
+                    Toast.makeText(requireContext(), ageValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                     return@setPositiveButton
                 }
 
                 val updatedProfile = profile.copy(
                     name = name,
-                    age = age,
+                    age = age!!,
                     photoUrl = selectedImageUri?.toString()
                 )
                 viewModel.updateProfile(updatedProfile)
-                Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)
             .show()
@@ -220,7 +276,6 @@ class ProfilesFragment : Fragment() {
             .setMessage("Are you sure you want to delete \"${profile.name}\"'s profile?\n\nThis action cannot be undone.")
             .setPositiveButton("Delete") { _, _ ->
                 viewModel.deleteProfile(profile)
-                Toast.makeText(requireContext(), "Profile deleted", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)
             .setIcon(android.R.drawable.ic_dialog_alert)

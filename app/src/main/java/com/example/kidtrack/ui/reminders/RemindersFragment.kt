@@ -21,9 +21,14 @@ import com.example.kidtrack.R
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.model.Reminder
 import com.example.kidtrack.data.repository.KidTrackRepository
+import com.example.kidtrack.utils.DateTimeUtils
 import com.example.kidtrack.utils.ReminderScheduler
+import com.example.kidtrack.utils.UiState
+import com.example.kidtrack.utils.ValidationHelper
+import com.example.kidtrack.utils.ValidationResult
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Calendar
 
@@ -65,10 +70,38 @@ class RemindersFragment : Fragment() {
         emptyStateLayout = view.findViewById(R.id.emptyStateReminders)
         setupEmptyState()
         
-        // Observe reminders data
-        remindersViewModel.reminders.observe(viewLifecycleOwner) { reminders ->
-            remindersAdapter.submitList(reminders)
-            updateEmptyState(reminders.isEmpty())
+        // Observe reminders data with UiState
+        remindersViewModel.reminders.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    remindersRecyclerView.visibility = View.GONE
+                    emptyStateLayout.visibility = View.GONE
+                }
+                is UiState.Success -> {
+                    remindersAdapter.submitList(state.data)
+                    updateEmptyState(state.data.isEmpty())
+                }
+                is UiState.Error -> {
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { remindersViewModel.retry() }
+                        .show()
+                }
+            }
+        }
+        
+        // Observe operation status
+        remindersViewModel.operationStatus.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Success -> {
+                    Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                    remindersViewModel.clearOperationStatus()
+                }
+                is UiState.Error -> {
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG).show()
+                    remindersViewModel.clearOperationStatus()
+                }
+                else -> {}
+            }
         }
         
         // Setup FAB click listener
@@ -167,16 +200,40 @@ class RemindersFragment : Fragment() {
                     val frequency = frequencyInput.text.toString().trim()
                     val selectedActivity = activityInput.text.toString().trim()
 
-                    if (selectedProfile.isEmpty() || time.isEmpty() || frequency.isEmpty() || selectedActivity.isEmpty()) {
-                        Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+                    // Validate inputs
+                    val timeValidation = ValidationHelper.validateTime(time)
+                    val frequencyValidation = ValidationHelper.validateNotEmpty(frequency, "Frequency")
+                    val profileValidation = if (selectedProfile.isEmpty()) {
+                        ValidationResult.Error("Please select a profile")
+                    } else ValidationResult.Success
+                    val activityValidation = if (selectedActivity.isEmpty()) {
+                        ValidationResult.Error("Please select an activity")
+                    } else ValidationResult.Success
+
+                    val combinedValidation = ValidationHelper.combine(
+                        timeValidation,
+                        frequencyValidation,
+                        profileValidation,
+                        activityValidation
+                    )
+
+                    if (!combinedValidation.isSuccess()) {
+                        Toast.makeText(requireContext(), combinedValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                         return@setPositiveButton
                     }
                     
                     val profileId = profileMap[selectedProfile] ?: 0L
                     val activityId = activityMap[selectedActivity] ?: 0L
+                    
+                    // Convert time to minutes
+                    val timeMinutes = DateTimeUtils.timeStringToMinutes(time)
+                    if (timeMinutes == null) {
+                        Toast.makeText(requireContext(), "Invalid time format", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
 
                     val reminder = Reminder(
-                        time = time,
+                        timeMinutes = timeMinutes,
                         frequency = frequency,
                         associatedActivityId = activityId,
                         profileId = profileId
@@ -193,8 +250,6 @@ class RemindersFragment : Fragment() {
                             ReminderScheduler.scheduleReminder(requireContext(), newReminder)
                         }
                     }
-                    
-                    Toast.makeText(requireContext(), "Reminder added successfully", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Cancel", null)
                 .show()
@@ -229,7 +284,7 @@ class RemindersFragment : Fragment() {
             val activityInput = dialogView.findViewById<AutoCompleteTextView>(R.id.activityInput)
 
             // Pre-fill time
-            timeInput.setText(reminder.time)
+            timeInput.setText(DateTimeUtils.minutesToTimeString(reminder.timeMinutes))
             
             // Setup profile dropdown
             val profileMap = profiles.associate { "${it.name} (${it.age} years)" to it.id }
@@ -285,27 +340,49 @@ class RemindersFragment : Fragment() {
                     val frequency = frequencyInput.text.toString().trim()
                     val selectedActivity = activityInput.text.toString().trim()
 
-                    if (selectedProfile.isEmpty() || time.isEmpty() || frequency.isEmpty() || selectedActivity.isEmpty()) {
-                        Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
+                    // Validate inputs
+                    val timeValidation = ValidationHelper.validateTime(time)
+                    val frequencyValidation = ValidationHelper.validateNotEmpty(frequency, "Frequency")
+                    val profileValidation = if (selectedProfile.isEmpty()) {
+                        ValidationResult.Error("Please select a profile")
+                    } else ValidationResult.Success
+                    val activityValidation = if (selectedActivity.isEmpty()) {
+                        ValidationResult.Error("Please select an activity")
+                    } else ValidationResult.Success
+
+                    val combinedValidation = ValidationHelper.combine(
+                        timeValidation,
+                        frequencyValidation,
+                        profileValidation,
+                        activityValidation
+                    )
+
+                    if (!combinedValidation.isSuccess()) {
+                        Toast.makeText(requireContext(), combinedValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                         return@setPositiveButton
                     }
                     
                     val profileId = profileMap[selectedProfile] ?: reminder.profileId
                     val activityId = activityMap[selectedActivity] ?: reminder.associatedActivityId
-
+                    
+                    // Convert time to minutes
+                    val timeMinutes = DateTimeUtils.timeStringToMinutes(time)
+                    if (timeMinutes == null) {
+                        Toast.makeText(requireContext(), "Invalid time format", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
+                    
                     val updatedReminder = reminder.copy(
-                        time = time,
-                        frequency = frequency,
+                        profileId = profileId,
                         associatedActivityId = activityId,
-                        profileId = profileId
+                        timeMinutes = timeMinutes,
+                        frequency = frequency
                     )
                     remindersViewModel.updateReminder(updatedReminder)
                     
                     // Cancel old alarm and schedule new one
                     ReminderScheduler.cancelReminder(requireContext(), reminder.id)
                     ReminderScheduler.scheduleReminder(requireContext(), updatedReminder)
-                    
-                    Toast.makeText(requireContext(), "Reminder updated successfully", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Cancel", null)
                 .show()
@@ -313,15 +390,15 @@ class RemindersFragment : Fragment() {
     }
 
     private fun showDeleteConfirmation(reminder: Reminder) {
+        val timeDisplay = DateTimeUtils.minutesToTimeString(reminder.timeMinutes)
         AlertDialog.Builder(requireContext())
             .setTitle("Delete Reminder")
-            .setMessage("Are you sure you want to delete this reminder?\n\nTime: ${reminder.time}\nFrequency: ${reminder.frequency}\n\nThis action cannot be undone.")
+            .setMessage("Are you sure you want to delete this reminder?\n\nTime: $timeDisplay\nFrequency: ${reminder.frequency}\n\nThis action cannot be undone.")
             .setPositiveButton("Delete") { _, _ ->
                 // Cancel the scheduled alarm
                 ReminderScheduler.cancelReminder(requireContext(), reminder.id)
                 
                 remindersViewModel.deleteReminder(reminder)
-                Toast.makeText(requireContext(), "Reminder deleted", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel", null)
             .setIcon(android.R.drawable.ic_dialog_alert)

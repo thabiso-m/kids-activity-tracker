@@ -31,9 +31,10 @@ object ReminderScheduler {
             }
         }
         
+        val timeString = DateTimeUtils.minutesToTimeString(reminder.timeMinutes)
         val intent = Intent(context, ReminderReceiver::class.java).apply {
             putExtra("REMINDER_ID", reminder.id)
-            putExtra("REMINDER_TIME", reminder.time)
+            putExtra("REMINDER_TIME_MINUTES", reminder.timeMinutes)
             putExtra("ACTIVITY_ID", reminder.associatedActivityId)
         }
         
@@ -44,7 +45,7 @@ object ReminderScheduler {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
         
-        val calendar = getNextReminderTime(reminder.time, reminder.frequency)
+        val calendar = getNextReminderTime(reminder.timeMinutes, reminder.frequency)
         
         // Schedule the alarm
         try {
@@ -56,7 +57,7 @@ object ReminderScheduler {
             
             Toast.makeText(
                 context,
-                "Reminder scheduled for ${reminder.time}",
+                "Reminder scheduled for $timeString",
                 Toast.LENGTH_SHORT
             ).show()
         } catch (e: Exception) {
@@ -89,28 +90,25 @@ object ReminderScheduler {
     /**
      * Calculate the next reminder time based on current time and frequency
      */
-    private fun getNextReminderTime(time: String, frequency: String): Calendar {
+    private fun getNextReminderTime(timeMinutes: Int, frequency: String): Calendar {
         val calendar = Calendar.getInstance()
         
-        // Parse time (HH:MM format)
-        val timeParts = time.split(":")
-        if (timeParts.size == 2) {
-            val hour = timeParts[0].toIntOrNull() ?: 9
-            val minute = timeParts[1].toIntOrNull() ?: 0
-            
-            calendar.set(Calendar.HOUR_OF_DAY, hour)
-            calendar.set(Calendar.MINUTE, minute)
-            calendar.set(Calendar.SECOND, 0)
-            calendar.set(Calendar.MILLISECOND, 0)
-            
-            // If the time has already passed today, schedule for next occurrence
-            if (calendar.timeInMillis <= System.currentTimeMillis()) {
-                when (frequency.lowercase()) {
-                    "daily" -> calendar.add(Calendar.DAY_OF_MONTH, 1)
-                    "weekly" -> calendar.add(Calendar.WEEK_OF_YEAR, 1)
-                    "monthly" -> calendar.add(Calendar.MONTH, 1)
-                    else -> calendar.add(Calendar.DAY_OF_MONTH, 1) // Default to daily
-                }
+        // Convert minutes to hours and minutes
+        val hour = timeMinutes / 60
+        val minute = timeMinutes % 60
+        
+        calendar.set(Calendar.HOUR_OF_DAY, hour)
+        calendar.set(Calendar.MINUTE, minute)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        
+        // If the time has already passed today, schedule for next occurrence
+        if (calendar.timeInMillis <= System.currentTimeMillis()) {
+            when (frequency.lowercase()) {
+                "daily" -> calendar.add(Calendar.DAY_OF_MONTH, 1)
+                "weekly" -> calendar.add(Calendar.WEEK_OF_YEAR, 1)
+                "monthly" -> calendar.add(Calendar.MONTH, 1)
+                else -> calendar.add(Calendar.DAY_OF_MONTH, 1) // Default to daily
             }
         }
         

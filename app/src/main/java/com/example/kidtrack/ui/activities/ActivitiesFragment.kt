@@ -22,9 +22,15 @@ import com.example.kidtrack.R
 import com.example.kidtrack.data.database.KidTrackDatabase
 import com.example.kidtrack.data.model.Activity
 import com.example.kidtrack.data.repository.KidTrackRepository
+import com.example.kidtrack.utils.DateTimeUtils
+import com.example.kidtrack.utils.UiState
+import com.example.kidtrack.utils.ValidationHelper
+import com.example.kidtrack.utils.ValidationResult
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
@@ -81,10 +87,45 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
             showFilterDialog()
         }
 
-        activitiesViewModel.activities.observe(viewLifecycleOwner) { activities ->
-            allActivities = activities
-            filterActivities(searchEditText.text.toString())
-            updateEmptyState(activities.isEmpty())
+        activitiesViewModel.activities.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    // Show loading state
+                    activitiesRecyclerView.visibility = View.GONE
+                    emptyStateLayout.visibility = View.GONE
+                }
+                is UiState.Success -> {
+                    // Hide loading and show data
+                    allActivities = state.data
+                    filterActivities(searchEditText.text.toString())
+                    updateEmptyState(state.data.isEmpty())
+                }
+                is UiState.Error -> {
+                    // Hide loading and show error
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Retry") { activitiesViewModel.retry() }
+                        .show()
+                }
+            }
+        }
+        
+        // Observe operation status
+        activitiesViewModel.operationStatus.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    // Show progress
+                }
+                is UiState.Success -> {
+                    Toast.makeText(requireContext(), state.data, Toast.LENGTH_SHORT).show()
+                    activitiesViewModel.clearOperationStatus()
+                }
+                is UiState.Error -> {
+                    Snackbar.make(view, state.message, Snackbar.LENGTH_LONG)
+                        .setAction("Dismiss") { activitiesViewModel.clearOperationStatus() }
+                        .show()
+                }
+                else -> {}
+            }
         }
         
         // Setup FAB click listener
@@ -182,23 +223,54 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
                     val description = descriptionInput.text.toString().trim()
                     val notes = notesInput.text.toString().trim()
 
-                    if (selectedProfile.isEmpty() || category.isEmpty() || date.isEmpty() || time.isEmpty() || description.isEmpty()) {
-                        Toast.makeText(requireContext(), "Please fill all required fields", Toast.LENGTH_SHORT).show()
+                    // Validate inputs
+                    val categoryValidation = ValidationHelper.combine(
+                        ValidationHelper.validateNotEmpty(category, "Category"),
+                        ValidationHelper.validateMaxLength(category, 50, "Category")
+                    )
+                    val dateValidation = ValidationHelper.validateDate(date)
+                    val timeValidation = ValidationHelper.validateTime(time)
+                    val descriptionValidation = ValidationHelper.combine(
+                        ValidationHelper.validateNotEmpty(description, "Description"),
+                        ValidationHelper.validateMaxLength(description, 200, "Description")
+                    )
+                    val profileValidation = if (selectedProfile.isEmpty()) {
+                        ValidationResult.Error("Please select a profile")
+                    } else ValidationResult.Success
+
+                    val combinedValidation = ValidationHelper.combine(
+                        categoryValidation,
+                        dateValidation,
+                        timeValidation,
+                        descriptionValidation,
+                        profileValidation
+                    )
+
+                    if (!combinedValidation.isSuccess()) {
+                        Toast.makeText(requireContext(), combinedValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                         return@setPositiveButton
                     }
                     
                     val profileId = profileMap[selectedProfile] ?: 0L
+                    
+                    // Convert date and time to timestamp and minutes
+                    val timestamp = DateTimeUtils.dateStringToTimestamp(date)
+                    val timeMinutes = DateTimeUtils.timeStringToMinutes(time)
+                    
+                    if (timestamp == null || timeMinutes == null) {
+                        Toast.makeText(requireContext(), "Invalid date or time format", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
 
                     val activity = Activity(
                         category = category,
-                        date = date,
-                        time = time,
+                        dateTimestamp = timestamp,
+                        timeMinutes = timeMinutes,
                         description = description,
                         notes = notes,
                         profileId = profileId
                     )
                     activitiesViewModel.addActivity(activity)
-                    Toast.makeText(requireContext(), "Activity added successfully", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Cancel", null)
                 .show()
@@ -229,8 +301,8 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
 
             // Pre-fill with existing data
             categoryInput.setText(activity.category)
-            dateInput.setText(activity.date)
-            timeInput.setText(activity.time)
+            dateInput.setText(DateTimeUtils.timestampToDateString(activity.dateTimestamp))
+            timeInput.setText(DateTimeUtils.minutesToTimeString(activity.timeMinutes))
             descriptionInput.setText(activity.description)
             notesInput.setText(activity.notes)
             
@@ -285,23 +357,54 @@ class ActivitiesFragment : Fragment(R.layout.fragment_activities) {
                     val description = descriptionInput.text.toString().trim()
                     val notes = notesInput.text.toString().trim()
 
-                    if (selectedProfile.isEmpty() || category.isEmpty() || date.isEmpty() || time.isEmpty() || description.isEmpty()) {
-                        Toast.makeText(requireContext(), "Please fill all required fields", Toast.LENGTH_SHORT).show()
+                    // Validate inputs
+                    val categoryValidation = ValidationHelper.combine(
+                        ValidationHelper.validateNotEmpty(category, "Category"),
+                        ValidationHelper.validateMaxLength(category, 50, "Category")
+                    )
+                    val dateValidation = ValidationHelper.validateDate(date)
+                    val timeValidation = ValidationHelper.validateTime(time)
+                    val descriptionValidation = ValidationHelper.combine(
+                        ValidationHelper.validateNotEmpty(description, "Description"),
+                        ValidationHelper.validateMaxLength(description, 200, "Description")
+                    )
+                    val profileValidation = if (selectedProfile.isEmpty()) {
+                        ValidationResult.Error("Please select a profile")
+                    } else ValidationResult.Success
+
+                    val combinedValidation = ValidationHelper.combine(
+                        categoryValidation,
+                        dateValidation,
+                        timeValidation,
+                        descriptionValidation,
+                        profileValidation
+                    )
+
+                    if (!combinedValidation.isSuccess()) {
+                        Toast.makeText(requireContext(), combinedValidation.getErrorMessage(), Toast.LENGTH_LONG).show()
                         return@setPositiveButton
                     }
                     
                     val profileId = profileMap[selectedProfile] ?: activity.profileId
+                    
+                    // Convert date and time to timestamp and minutes
+                    val timestamp = DateTimeUtils.dateStringToTimestamp(date)
+                    val timeMinutes = DateTimeUtils.timeStringToMinutes(time)
+                    
+                    if (timestamp == null || timeMinutes == null) {
+                        Toast.makeText(requireContext(), "Invalid date or time format", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
 
                     val updatedActivity = activity.copy(
                         category = category,
-                        date = date,
-                        time = time,
+                        dateTimestamp = timestamp,
+                        timeMinutes = timeMinutes,
                         description = description,
                         notes = notes,
                         profileId = profileId
                     )
                     activitiesViewModel.updateActivity(updatedActivity)
-                    Toast.makeText(requireContext(), "Activity updated successfully", Toast.LENGTH_SHORT).show()
                 }
                 .setNegativeButton("Cancel", null)
                 .show()

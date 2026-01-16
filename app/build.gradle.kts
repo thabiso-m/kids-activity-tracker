@@ -44,6 +44,16 @@ android {
             excludes += "/META-INF/LICENSE"
         }
     }
+
+    applicationVariants.all {
+        outputs.all {
+            val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
+            val versionName = defaultConfig.versionName
+            val versionCode = defaultConfig.versionCode
+            val buildType = buildType.name
+            output.outputFileName = "KidTrack-v${versionName}-${versionCode}-${buildType}.apk"
+        }
+    }
 }
 
 dependencies {
