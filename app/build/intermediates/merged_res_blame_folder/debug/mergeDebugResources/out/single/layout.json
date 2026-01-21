@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_reports.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_reports.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\widget_quick_activity.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\widget_quick_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\calendar_month_header.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\calendar_month_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\calendar_day_layout.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\calendar_day_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\item_profile.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_dashboard.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\dialog_add_profile.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_profile.xml"
+    },
+    {
+        "merged": "com.example.kidtrack.app-mergeDebugResources-56:/layout/fragment_dashboard.xml",
+        "source": "com.example.kidtrack.app-main-59:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_activities.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_activities.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\dialog_report.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_report.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\item_reminder.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_reminder.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\item_stat_card.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_stat_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_reminders.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_reminders.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_profiles.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_profiles.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\fragment_calendar.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_calendar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\item_activity.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\dialog_add_activity.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\dialog_add_reminder.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_reminder.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\empty_state.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\empty_state.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-mergeDebugResources-56:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\activity_main.xml"
+    }
+]

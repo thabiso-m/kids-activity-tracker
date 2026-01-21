@@ -1,0 +1,150 @@
+[
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_widget_quick_activity.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\widget_quick_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_dialog_add_profile.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_secondary.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_secondary.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_tertiary.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_tertiary.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_empty_state.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\empty_state.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_reminders.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_reminders.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\xml_widget_info.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\xml\\widget_info.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_calendar_day_layout.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\calendar_day_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_item_activity.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_reports.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_reports.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_item_reminder.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_reminder.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.kidtrack.app-debug-57:/layout_fragment_dashboard.xml.flat",
+        "source": "com.example.kidtrack.app-main-59:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_activities.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_activities.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_fab.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_fab.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_button_gradient_primary.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\button_gradient_primary.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_calendar_month_header.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\calendar_month_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\navigation\\nav_graph.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_app_bar.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_app_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_dialog_report.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_report.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_dashboard.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_dashboard.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_profiles.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_profiles.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_fragment_calendar.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\fragment_calendar.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_card_bg.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_card_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_dialog_add_reminder.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_reminder.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_item_profile.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_profile.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_item_stat_card.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\item_stat_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_gradient_primary.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\gradient_primary.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_splash_icon.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\splash_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\layout_dialog_add_activity.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\layout\\dialog_add_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-debug-57:\\drawable_splash_branding.xml.flat",
+        "source": "C:\\Users\\Thabzzz\\.gradle\\daemon\\8.4\\com.example.kidtrack.app-main-59:\\drawable\\splash_branding.xml"
+    }
+]

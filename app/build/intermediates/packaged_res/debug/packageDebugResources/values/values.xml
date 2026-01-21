@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reminder_frequencies">
+        <item>Once</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+    <color name="accent_blue">#6BCBFF</color>
+    <color name="accent_green">#00D68F</color>
+    <color name="accent_pink">#FF6B9D</color>
+    <color name="accent_yellow">#FFD93D</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_bg_end">#F5F8FF</color>
+    <color name="card_bg_start">#FFFFFF</color>
+    <color name="colorBackground">#FDFCFF</color>
+    <color name="colorOnBackground">#1A1C1E</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorPrimary">#0061A4</color>
+    <color name="colorPrimaryVariant">#004A7C</color>
+    <color name="colorSecondary">#6B5778</color>
+    <color name="colorSecondaryVariant">#544263</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="gradient_center">#0078CC</color>
+    <color name="gradient_end">#00A3FF</color>
+    <color name="gradient_secondary_end">#B39DC8</color>
+    <color name="gradient_secondary_start">#6B5778</color>
+    <color name="gradient_start">#0061A4</color>
+    <color name="gradient_tertiary_end">#FF9500</color>
+    <color name="gradient_tertiary_start">#855300</color>
+    <color name="md_theme_light_background">#FDFCFF</color>
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onBackground">#1A1C1E</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#001D36</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_onSecondaryContainer">#251431</color>
+    <color name="md_theme_light_onSurface">#1A1C1E</color>
+    <color name="md_theme_light_onSurfaceVariant">#43474E</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_onTertiaryContainer">#2A1800</color>
+    <color name="md_theme_light_outline">#73777F</color>
+    <color name="md_theme_light_outlineVariant">#C3C6CF</color>
+    <color name="md_theme_light_primary">#0061A4</color>
+    <color name="md_theme_light_primaryContainer">#D1E4FF</color>
+    <color name="md_theme_light_secondary">#6B5778</color>
+    <color name="md_theme_light_secondaryContainer">#F3DAFF</color>
+    <color name="md_theme_light_surface">#FDFCFF</color>
+    <color name="md_theme_light_surfaceVariant">#DFE2EB</color>
+    <color name="md_theme_light_tertiary">#855300</color>
+    <color name="md_theme_light_tertiaryContainer">#FFDDB5</color>
+    <color name="overlay_scrim">#80000000</color>
+    <color name="shadow_light">#1A000000</color>
+    <color name="shadow_medium">#40000000</color>
+    <color name="text_primary">#1A1C1E</color>
+    <color name="text_secondary">#5F6368</color>
+    <string name="activities_title">Activities</string>
+    <string name="activity_description_hint">Enter activity description</string>
+    <string name="add_activity">Add Activity</string>
+    <string name="app_name">KidTrack</string>
+    <string name="cancel">Cancel</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="dashboard_title">Dashboard</string>
+    <string name="no_activities">No activities available.</string>
+    <string name="no_profiles">No profiles created.</string>
+    <string name="no_reminders">No reminders set.</string>
+    <string name="notification_channel_description">Notifications for reminders and activities</string>
+    <string name="notification_channel_name">KidTrack Notifications</string>
+    <string name="profile_age_hint">Enter child\'s age</string>
+    <string name="profile_name_hint">Enter child\'s name</string>
+    <string name="profiles_title">Profiles</string>
+    <string name="reminder_time_hint">Select reminder time</string>
+    <string name="reminders_title">Reminders</string>
+    <string name="reports_title">Reports</string>
+    <string name="save">Save</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="view_reports">View Reports</string>
+    <string name="welcome_message">Welcome to KidTrack!</string>
+    <string name="widget_description">Quick activity tracking widget</string>
+    <style name="AppTheme" parent="Theme.Material3.DayNight">
+        
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
+        
+        
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_light_onSecondaryContainer</item>
+        
+        
+        <item name="colorTertiary">@color/md_theme_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_light_onTertiaryContainer</item>
+        
+        
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorOnError">@color/md_theme_light_onError</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+        
+        
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+        
+        
+        <item name="colorOutline">@color/md_theme_light_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_light_outlineVariant</item>
+        
+        
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.KidTrack.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.KidTrack.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.KidTrack.LargeComponent</item>
+    </style>
+    <style name="ShapeAppearance.KidTrack.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+    <style name="ShapeAppearance.KidTrack.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="ShapeAppearance.KidTrack.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        
+        <item name="windowSplashScreenBackground">@color/md_theme_light_primary</item>
+        
+        
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        
+        
+        <item name="windowSplashScreenIconBackgroundColor">@color/md_theme_light_primary</item>
+        
+                
+        
+        
+        
+        <item name="windowSplashScreenAnimationDuration">500</item>
+        
+        
+        <item name="postSplashScreenTheme">@style/Theme.KidTrack</item>
+    </style>
+    <style name="Theme.KidTrack" parent="AppTheme"/>
+</resources>

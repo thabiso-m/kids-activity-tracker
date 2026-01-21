@@ -1,0 +1,26 @@
+KidTrack - Version Information
+================================
+
+Version Name: 2.1.0
+Version Code: 4
+Build Date: 2026-01-17
+
+Features in this version:
+- Day-before event reminders
+- 26 predefined activity tasks
+- Sound alerts for notifications
+- Snooze functionality (10 minutes)
+- Enhanced notification system
+- Build information tracking
+
+Database Version: 4
+
+Minimum Android: 5.0 (API 21)
+Target Android: 14.0 (API 34)
+
+Application ID: com.example.kidtrack
+
+Build Configuration:
+- compileSdk: 34
+- minSdk: 21
+- targetSdk: 34

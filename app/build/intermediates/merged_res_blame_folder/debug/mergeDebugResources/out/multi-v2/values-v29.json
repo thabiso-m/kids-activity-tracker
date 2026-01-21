@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.kidtrack.app-mergeDebugResources-55:/values-v29/values-v29.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Thabzzz\\.gradle\\caches\\transforms-3\\9afaf1dc758047e4e264ef2d47361993\\transformed\\jetified-core-splashscreen-1.0.1\\res\\values-v29\\values-v29.xml",
+                    "from": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,374",
+                        "endLines": "6,8",
+                        "endColumns": "12,12",
+                        "endOffsets": "369,464"
+                    }
+                }
+            ]
+        }
+    ]
+}

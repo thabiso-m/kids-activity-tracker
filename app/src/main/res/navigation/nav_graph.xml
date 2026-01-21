@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.kidtrack.ui.dashboard.DashboardFragment"
+        android:label="Dashboard" />
+
+    <fragment
+        android:id="@+id/activitiesFragment"
+        android:name="com.example.kidtrack.ui.activities.ActivitiesFragment"
+        android:label="Activities" />
+
+    <fragment
+        android:id="@+id/profilesFragment"
+        android:name="com.example.kidtrack.ui.profiles.ProfilesFragment"
+        android:label="Profiles" />
+
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name="com.example.kidtrack.ui.reports.ReportsFragment"
+        android:label="Reports" />
+    
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.kidtrack.ui.calendar.CalendarFragment"
+        android:label="Calendar" />
+</navigation>

@@ -1,0 +1,80 @@
+<resources>
+    <!-- Material Design 3 Color Scheme - Kid-Friendly -->
+    
+    <!-- Primary Colors - Vibrant Blue -->
+    <color name="md_theme_light_primary">#0061A4</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#D1E4FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#001D36</color>
+    
+    <!-- Secondary Colors - Playful Purple -->
+    <color name="md_theme_light_secondary">#6B5778</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#F3DAFF</color>
+    <color name="md_theme_light_onSecondaryContainer">#251431</color>
+    
+    <!-- Tertiary Colors - Warm Orange -->
+    <color name="md_theme_light_tertiary">#855300</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#FFDDB5</color>
+    <color name="md_theme_light_onTertiaryContainer">#2A1800</color>
+    
+    <!-- Error Colors -->
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    
+    <!-- Background and Surface -->
+    <color name="md_theme_light_background">#FDFCFF</color>
+    <color name="md_theme_light_onBackground">#1A1C1E</color>
+    <color name="md_theme_light_surface">#FDFCFF</color>
+    <color name="md_theme_light_onSurface">#1A1C1E</color>
+    <color name="md_theme_light_surfaceVariant">#DFE2EB</color>
+    <color name="md_theme_light_onSurfaceVariant">#43474E</color>
+    
+    <!-- Outline -->
+    <color name="md_theme_light_outline">#73777F</color>
+    <color name="md_theme_light_outlineVariant">#C3C6CF</color>
+    
+    <!-- Backward compatibility aliases -->
+    <color name="colorPrimary">#0061A4</color>
+    <color name="colorPrimaryVariant">#004A7C</color>
+    <color name="colorSecondary">#6B5778</color>
+    <color name="colorSecondaryVariant">#544263</color>
+    <color name="colorBackground">#FDFCFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorOnBackground">#1A1C1E</color>
+    
+    <!-- Additional UI Colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="text_primary">#1A1C1E</color>
+    <color name="text_secondary">#5F6368</color>
+    
+    <!-- Gradient Colors -->\n    <color name="gradient_start">#0061A4</color>
+    <color name="gradient_center">#0078CC</color>
+    <color name="gradient_end">#00A3FF</color>
+    
+    <color name="gradient_secondary_start">#6B5778</color>
+    <color name="gradient_secondary_end">#B39DC8</color>
+    
+    <color name="gradient_tertiary_start">#855300</color>
+    <color name="gradient_tertiary_end">#FF9500</color>
+    
+    <!-- Accent Colors for Modern UI -->
+    <color name="accent_pink">#FF6B9D</color>
+    <color name="accent_green">#00D68F</color>
+    <color name="accent_yellow">#FFD93D</color>
+    <color name="accent_blue">#6BCBFF</color>
+    
+    <!-- Shadows and Overlays -->
+    <color name="shadow_light">#1A000000</color>
+    <color name="shadow_medium">#40000000</color>
+    <color name="overlay_scrim">#80000000</color>
+    
+    <!-- Card backgrounds with subtle gradients -->
+    <color name="card_bg_start">#FFFFFF</color>
+    <color name="card_bg_end">#F5F8FF</color>
+</resources>

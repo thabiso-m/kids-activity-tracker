@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="40dp"
+    android:viewportWidth="200"
+    android:viewportHeight="40">
+    
+    <!-- KidTrack text -->
+    <group android:translateX="100" android:translateY="20">
+        <!-- "K" -->
+        <path
+            android:fillColor="@color/md_theme_light_onPrimary"
+            android:pathData="M-80,-12 L-80,12 M-80,0 L-70,-12 M-80,0 L-70,12"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        
+        <!-- "i" -->
+        <path
+            android:fillColor="@color/md_theme_light_onPrimary"
+            android:pathData="M-62,-2 L-62,12 M-62,-8 L-62,-6"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:strokeLineCap="round" />
+        
+        <!-- "d" -->
+        <path
+            android:pathData="M-52,5 Q-52,-2 -47,-2 Q-42,-2 -42,5 Q-42,12 -47,12 Q-52,12 -52,5 M-42,-12 L-42,12"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:fillColor="@android:color/transparent"
+            android:strokeLineCap="round" />
+        
+        <!-- "T" -->
+        <path
+            android:fillColor="@color/md_theme_light_onPrimary"
+            android:pathData="M-28,-2 L-20,-2 M-24,-2 L-24,12"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:strokeLineCap="round" />
+        
+        <!-- "r" -->
+        <path
+            android:pathData="M-12,-2 L-12,12 M-12,2 Q-10,-2 -6,-2"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:fillColor="@android:color/transparent"
+            android:strokeLineCap="round" />
+        
+        <!-- "a" -->
+        <path
+            android:pathData="M2,5 Q2,-2 7,-2 Q12,-2 12,5 Q12,12 7,12 Q2,12 2,5 M12,-2 L12,12"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:fillColor="@android:color/transparent"
+            android:strokeLineCap="round" />
+        
+        <!-- "c" -->
+        <path
+            android:pathData="M28,12 Q22,12 22,5 Q22,-2 28,-2"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:fillColor="@android:color/transparent"
+            android:strokeLineCap="round" />
+        
+        <!-- "k" -->
+        <path
+            android:fillColor="@color/md_theme_light_onPrimary"
+            android:pathData="M36,-12 L36,12 M36,4 L44,-2 M36,4 L44,12"
+            android:strokeWidth="3"
+            android:strokeColor="@color/md_theme_light_onPrimary"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

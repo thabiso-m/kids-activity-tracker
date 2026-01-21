@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/emptyStateLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:visibility="gone">
+
+    <!-- Empty Icon Container -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="24dp"
+        app:cardCornerRadius="60dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/md_theme_light_primaryContainer"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ImageView
+            android:id="@+id/emptyStateIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_menu_agenda"
+            app:tint="@color/md_theme_light_onPrimaryContainer" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Empty State Title -->
+    <TextView
+        android:id="@+id/emptyStateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Activities Yet"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/md_theme_light_onSurface"
+        android:layout_marginBottom="12dp"
+        android:gravity="center" />
+
+    <!-- Empty State Message -->
+    <TextView
+        android:id="@+id/emptyStateMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start tracking your child's activities by adding your first activity!"
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Get Started Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/emptyStateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Started"
+        android:paddingHorizontal="32dp"
+        style="@style/Widget.Material3.Button.TonalButton" />
+
+</LinearLayout>
